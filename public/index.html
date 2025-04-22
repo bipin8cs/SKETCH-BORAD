@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>open board</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="options-cont">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="tools-cont scale-tools">
+        <img src="./Icons/Pencil.svg" alt="Pencil"  id="pencil">
+        <img src="./Icons/Eraser.svg" alt="Eraser" id="eraser">
+        <img src="./Icons/Download.svg" alt="Download"  id="download">
+        <img src="./Icons/Upload.svg" alt="Upload"  id="upload">
+        <img src="./Icons/StickyNote.svg" alt="Sticky Note" id="sticky">
+        <img src="./Icons/Undo.svg" alt="Undo"  id="undo">
+        <img src="./Icons/Redo.svg" alt="Redo"  id="redo">
+
+    </div>
+    <div class="pencil-tool-cont">
+        <div class="pencil-width-cont">
+            <input type="range" min="2" max="10" value="3" class="pencil-width">
+        </div>
+        <div class="pencil-color-cont" style="display: flex; justify-content: center; align-items: center;">
+            <div class="black pencil-color"></div>
+            <div class="red pencil-color"></div>
+            <div class="blue pencil-color"></div>
+        </div>
+    </div>
+    <div class="eraser-tool-cont">
+        <input type="range" min="2" max="10" value="3" class="eraser-width">
+    </div>
+    <canvas></canvas>
+   
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+    <script>
+        let socket=io.connect("http://localhost:5000");
+    </script>
+    <script src="./tools.js">
+    </script>
+    <script src="./canvas.js"></script>
+</body>
+
+</html>
