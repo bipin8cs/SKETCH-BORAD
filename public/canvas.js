@@ -1,5 +1,5 @@
 let canvas = document.querySelector("canvas");
-import { data } from '../../../../LearningTech/FULL STACK/System Design/Kafka/note';
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let pencilColor = document.querySelectorAll(".pencil-color");
@@ -31,27 +31,29 @@ canvas.addEventListener('mousedown', (e) => {
     // })
 
     //send data to server
-    socket.emit('beginPath', {
+    let data = {
         x: e.clientX,
         y: e.clientY
-    })
+    }
+    socket.emit('beginPath', data)
 
 })
 canvas.addEventListener('mousemove', (e) => {
-    let data = {
-        x: e.clientX,
-        y: e.clientY,
-        color: eraserFlag ? eraserClor : penColor,
-        width: eraserFlag ? eraserWidth : penWidth
-    }
+
     if (mouseDown) {
+        let data = {
+            x: e.clientX,
+            y: e.clientY,
+            color: eraserFlag ? eraserClor : penColor,
+            width: eraserFlag ? eraserWidth : penWidth
+        }
         // drawStroke({
         //     x: e.clientX,
         //     y: e.clientY,
         //     color: eraserFlag ? eraserClor : penColor,
         //     width: eraserFlag ? eraserWidth : penWidth
         // })
-        socket.emit('drawStoke', data);
+        socket.emit('drawStroke', data);
     }
 
 })
@@ -71,7 +73,7 @@ undo.addEventListener("click", (e) => {
         }
 
         socket.emit("undoRedo", trackObj);
-        //undoRedoCanvas(trackObj);
+        // undoRedoCanvas(trackObj);
     } else {
         console.log("no more undo")
     }
@@ -84,7 +86,8 @@ redo.addEventListener("click", (e) => {
             trackValue: track,
             undoRedoTracker: undoRedoTracker
         }
-        undoRedoCanvas(trackObj);
+        //undoRedoCanvas(trackObj);
+        socket.emit("undoRedo", trackObj);
 
     } else {
         console.log("no more redo")
@@ -131,7 +134,7 @@ pencilWidthEle.addEventListener("change", (e) => {
 })
 eraserWidthEle.addEventListener("change", (e) => {
     eraserWidth = eraserWidthEle.value;
-    tool.lineWidth = penWidth;
+    tool.lineWidth = eraserWidth;
 })
 eraserTool.addEventListener("click", (e) => {
     console.log(eraserFlag)
@@ -154,12 +157,15 @@ download.addEventListener("click", (e) => {
 
 })
 socket.on("beginPath", (data) => {
+    debugger
     //data===>data from server
     beginPath(data);
 });
 socket.on('drawStroke', (data) => {
+    debugger
     drawStroke(data)
 })
-Socket.on("undoRedo", (trackObj) => {
+socket.on("undoRedo", (trackObj) => {
+    debugger
     undoRedoCanvas(trackObj);
 })

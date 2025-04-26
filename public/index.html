@@ -16,13 +16,13 @@
         <i class="fa fa-bars"></i>
     </div>
     <div class="tools-cont scale-tools">
-        <img src="./Icons/Pencil.svg" alt="Pencil"  id="pencil">
+        <img src="./Icons/Pencil.svg" alt="Pencil" id="pencil">
         <img src="./Icons/Eraser.svg" alt="Eraser" id="eraser">
-        <img src="./Icons/Download.svg" alt="Download"  id="download">
-        <img src="./Icons/Upload.svg" alt="Upload"  id="upload">
+        <img src="./Icons/Download.svg" alt="Download" id="download">
+        <img src="./Icons/Upload.svg" alt="Upload" id="upload">
         <img src="./Icons/StickyNote.svg" alt="Sticky Note" id="sticky">
-        <img src="./Icons/Undo.svg" alt="Undo"  id="undo">
-        <img src="./Icons/Redo.svg" alt="Redo"  id="redo">
+        <img src="./Icons/Undo.svg" alt="Undo" id="undo">
+        <img src="./Icons/Redo.svg" alt="Redo" id="redo">
 
     </div>
     <div class="pencil-tool-cont">
@@ -39,10 +39,12 @@
         <input type="range" min="2" max="10" value="3" class="eraser-width">
     </div>
     <canvas></canvas>
-   
-<script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+        integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+        crossorigin="anonymous"></script>
     <script>
-        let socket=io.connect("http://localhost:5000");
+        let socket = io.connect("http://localhost:1200");
     </script>
     <script src="./tools.js">
     </script>
