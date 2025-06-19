@@ -1,5 +1,4 @@
 let canvas = document.querySelector("canvas");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let pencilColor = document.querySelectorAll(".pencil-color");
@@ -14,8 +13,6 @@ let penWidth = pencilWidthEle.value;
 let eraserWidth = eraserWidthEle.value;
 let undoRedoTracker = []; //Data
 let track = 0;//represt which action  from trcaker array
-
-
 let tool = canvas.getContext("2d");
 tool.strokeStyle = penColor;
 tool.lineWidth = penWidth;
@@ -29,7 +26,6 @@ canvas.addEventListener('mousedown', (e) => {
     //     x: e.clientX,
     //     y: e.clientY,
     // })
-
     //send data to server
     let data = {
         x: e.clientX,
@@ -104,8 +100,6 @@ function undoRedoCanvas(trackObj) {
     img.onload = () => {
         tool.drawImage(img, 0, 0, canvas.width, canvas.height);
     }
-
-
 }
 function beginPath(stokeObj) {
     tool.beginPath();
@@ -157,15 +151,12 @@ download.addEventListener("click", (e) => {
 
 })
 socket.on("beginPath", (data) => {
-    debugger
     //data===>data from server
     beginPath(data);
 });
 socket.on('drawStroke', (data) => {
-    debugger
     drawStroke(data)
 })
 socket.on("undoRedo", (trackObj) => {
-    debugger
     undoRedoCanvas(trackObj);
 })

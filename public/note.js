@@ -1,7 +1,5 @@
 //if you are not mentioning display property in your code then default it will be block
-
 //https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Client-side_APIs/Drawing_graphics
-
 // tool.strokeStyle = "blue";//clor of line
 // tool.lineWidth = "8";//width of line 
 // tool.beginPath();//new graphic or path or line
